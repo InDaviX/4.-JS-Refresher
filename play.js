@@ -1,12 +1,5 @@
-const name = "Dawid";
-let age = 18;
-let knowJS = true;
-let nameAgeCombination = name+age;
-console.log(name, age, knowJS);
-
-function whoIsUser(imie, wiek) {
-    return "name is " + imie + " and age is " + wiek;
+function myFunction(a,b) {
+    return a+b;
 }
-
-console.log(whoIsUser(name, age));
-console.log(nameAgeCombination);
+const myArrowFunction = (a,b) => a+b;
+console.log(myFunction(1,2), myArrowFunction(1,2))
