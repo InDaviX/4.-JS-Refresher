@@ -1,24 +1,34 @@
-const person = {name: "Dawid", age: 18, work: "studying"};
-// __Tak byśmy to zrobili normalnie:__
-// const name = person.name;
-// const age = person.age;
-// const work = person.work;
-
-// const {name, work} = person;
-// console.log(name, work);
-
-const numbers = [1,2,3,4,5];
-// __Tak byśmy to zrobili normalnie:__
-// const first = numbers[0]
-// const second = numbers[1]
-// const third = numbers[2]
-// const fourth = numbers[3]
-// const fifth = numbers[4]
-
-const [first, second, third] = numbers;
-console.log(first, second, third);
+// const getUser = username => {
+//     const API_URL = `https://api.github.com/users/${username}`;
+//     return fetch(API_URL).then(value => value.json());
+// }
+// getUser('openai').then((val) => console.log(val));
 
 
-// __Tak można wybrać elementy POZA JAKIMIŚ Z NICH:__
-// const {work, ...rest} = person;
-// console.log(work, rest);
+
+// const getUser = async username => {
+//     const API_URL = `https://api.github.com/users/${username}`;
+//     const response = await fetch(API_URL);
+//     const data = response.json();
+//     return data;
+// }
+
+// getUser("openai").then((val) => console.log(val));
+
+
+
+const getGithubUser = username => {
+    return new Promise((resolve, reject) => {
+        fetch(`https://api.github.com/users/${username}`).then((response) => response.json()).
+        then((data) => {
+            if(data.message === "Not Found"){
+                reject("User not found");
+            }else{
+                resolve(data);
+            }
+        }).catch(err => reject(err));
+    })
+}
+
+
+getGithubUser("haboasdfwnia").then((val) => console.log(val)).catch((err) => console.log('error', err));
