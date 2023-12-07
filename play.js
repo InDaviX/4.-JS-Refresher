@@ -1,5 +1,8 @@
-function myFunction(a,b) {
-    return a+b;
+const person = {
+    name: 'John',
+    age: 34,
+    greet: function (){
+        console.log("Hi, I'm " + this.name + "!");
+    }
 }
-const myArrowFunction = (a,b) => a+b;
-console.log(myFunction(1,2), myArrowFunction(1,2))
+console.log(person.greet());
