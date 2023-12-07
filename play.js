@@ -1,10 +1,13 @@
-const hobbies = ["reading","cooking"];
-hobbies.push("programming");
-console.log(hobbies);
+const hobbies = ["sports","cooking"];
+const copied = [...hobbies, ...["gaming"]];
+console.log(copied);
 
-const hobbiesObject = {
-    name: "Dawid",
-    type: "Programming"
+const person = {name: "Dawid", age: 18};
+const copied2 = {...person, ...{hobby: "gaming"}};
+console.log(copied2);
+
+// const toArray = (...args) => args;
+function toArray(...args){
+    return args;
 }
-hobbiesObject.age = 18;
-console.log(hobbiesObject);
+console.log(toArray(2,3,4).reduce((total, current) => {return total + current;}));
